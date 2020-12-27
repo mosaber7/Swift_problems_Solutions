@@ -1,0 +1,34 @@
+//two sum PS challenge
+
+func twosum(of array: [Int], target:Int)->Bool{
+    var dect : [Int:Int] = [0:(target-array[0])]
+    for (index,value) in array.enumerated(){
+        if dect.values.contains(value){
+            return true
+        }
+        else {dect[index] = target-value}
+            }
+    return false
+}
+let array_test = [1,2,6,7,7,12,14]
+twosum(of: array_test, target: 4)
+
+
+func twoSumPointers(of array: [Int], target:Int)->Bool{
+    var lastPointre = array.count-1
+    var firstPointer = 0
+    
+    while firstPointer != lastPointre{
+        if array[firstPointer] + array[lastPointre] == target{
+            return true
+        }
+        if array[firstPointer] + array[lastPointre] > target{
+           lastPointre-=1
+        }
+        else {
+            firstPointer+=1
+        }
+    }
+    return false
+}
+twoSumPointers(of: array_test, target: 4)
